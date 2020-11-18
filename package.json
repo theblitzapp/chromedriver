@@ -7,7 +7,6 @@
     "chromedriver": "./chromedriver.js"
   },
   "scripts": {
-    "preinstall": "cross-env ELECTRON_CUSTOM_VERSION=10.1.5",
     "install": "node ./download-chromedriver.js",
     "lint": "standard --fix",
     "test": "standard && mocha"

@@ -2,7 +2,7 @@ const { promises: fs } = require('fs')
 const path = require('path')
 const { downloadArtifact } = require('@electron/get')
 const extractZip = require('extract-zip')
-const versionToDownload = require('./package').version
+const versionToDownload = "10.1.5"
 
 function download (version) {
   return downloadArtifact({
@@ -17,8 +17,6 @@ function download (version) {
 
 async function attemptDownload (version) {
   try {
-    console.log('version is: ')
-    console.log(version)
     const targetFolder = path.join(__dirname, 'bin')
     const zipPath = await download(version)
     await extractZip(zipPath, { dir: targetFolder })
