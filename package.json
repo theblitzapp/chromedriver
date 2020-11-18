@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@electron/get": "^1.12.2",
+    "cross-env": "^7.0.2",
     "extract-zip": "^2.0.0"
   },
   "devDependencies": {
