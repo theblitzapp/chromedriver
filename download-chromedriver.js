@@ -3,10 +3,8 @@ const path = require('path')
 const { downloadArtifact } = require('@electron/get')
 const extractZip = require('extract-zip')
 const versionToDownload = require('./package').version
-const os = require('os');
 
 function download (version) {
-  console.log('in the download function')
   return downloadArtifact({
     version,
     artifactName: 'chromedriver',
@@ -18,15 +16,9 @@ function download (version) {
 }
 
 async function attemptDownload (version) {
-  console.log('does it get here. attempt download function')
   try {
-    console.log('in try block')
     const targetFolder = path.join(__dirname, 'bin')
-    console.log('target folder is: ')
-    console.log(targetFolder)
-    const zipPath = path.join(os.homedir(), '/Library/Caches/electron/chromedriver-v10.1.5-darwin-x64.zip')
-    console.log('zipPath is: ')
-    console.log(zipPath)
+    const zipPath = await download(version)
     await extractZip(zipPath, { dir: targetFolder })
     const platform = process.env.npm_config_platform || process.platform
     if (platform !== 'win32') {
