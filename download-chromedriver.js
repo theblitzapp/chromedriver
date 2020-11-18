@@ -17,6 +17,7 @@ function download (version) {
 
 async function attemptDownload (version) {
   try {
+    console.log('does it get here?')
     const targetFolder = path.join(__dirname, 'bin')
     const zipPath = await download(version)
     await extractZip(zipPath, { dir: targetFolder })
